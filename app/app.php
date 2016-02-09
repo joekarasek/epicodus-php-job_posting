@@ -44,14 +44,15 @@
     });
 
     $app->get("/result", function() {
-        $title = $_GET['title'];
-        $description = $_GET['description'];
-        $name = $_GET['name'];
-        $phone = $_GET['phone'];
-        $email = $_GET['email'];
+        // $title = $_GET['title'];
+        // $description = $_GET['description'];
+        // $name = $_GET['name'];
+        // $phone = $_GET['phone'];
+        // $email = $_GET['email'];
+        // refactored
 
-        $contact = new Contact($name, $phone, $email);
-        $job = new JobOpening($title, $description, $contact);
+        $contact = new Contact($_GET['name'], $_GET['phone'], $_GET['email']);
+        $job = new JobOpening($_GET['title'], $_GET['description'], $contact);
 
         return "<!DOCTYPE html>
                 <html>
