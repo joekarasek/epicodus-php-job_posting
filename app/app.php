@@ -4,43 +4,12 @@
     require_once __DIR__."/../src/Contact.php";
 
     $app = new Silex\Application();
+    $app->register(new Silex\Provider\TwigServiceProvider(), array(
+        'twig.path' => __DIR__.'/../views'
+    ));
 
-    $app->get("/", function() {
-        return "<!DOCTYPE html>
-                <html>
-                <head>
-                    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
-                    <title>Post a Job</title>
-                </head>
-                <body>
-                    <div class='container'>
-                        <h1>Post a Job</h1>
-                        <form action='/result'>
-                            <div class='form-group'>
-                                <label for='title'>Enter the job title:</label>
-                                <input id='title' name='title' class='form-control' type='text'>
-                            </div>
-                            <div class='form-group'>
-                                <label for='description'>Enter the job description:</label>
-                                <input id='description' name='description' class='form-control' type='text'>
-                            </div>
-                            <div class='form-group'>
-                                <label for='name'>Enter your name:</label>
-                                <input id='name' name='name' class='form-control' type='text'>
-                            </div>
-                            <div class='form-group'>
-                                <label for='phone'>Enter your phone number:</label>
-                                <input id='phone' name='phone' class='form-control' type='number'>
-                            </div>
-                            <div class='form-group'>
-                                <label for='email'>Enter your email:</label>
-                                <input id='email' name='email' class='form-control' type='text'>
-                            </div>
-                            <button type='submit' class='btn-success'>Submit</button>
-                        </form>
-                    </div>
-                </body>
-                </html>";
+    $app->get("/", function() use ($app) {
+        return $app['twig']->render('form.html.twig');
     });
 
     $app->get("/result", function() {
