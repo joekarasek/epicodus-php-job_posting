@@ -3,7 +3,7 @@
     {
         private $title = '';
         private $description = '';
-        private $contact_info = '';
+        private $contact_info;
 
         function __construct($title, $description, $contact_info)
         {
