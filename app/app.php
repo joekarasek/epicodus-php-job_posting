@@ -34,5 +34,33 @@
                 </html>";
     });
 
+    $app->get("/result", function() {
+        $title = $_GET['title'];
+        $description = $_GET['description'];
+        $contact = $_GET['contact'];
+
+        $job = new JobOpening($title, $description, $contact);
+
+        return "<!DOCTYPE html>
+                <html>
+                <head>
+                    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+                    <title>Find a Car</title>
+                </head>
+                <body>
+                    <div class='container'>
+                        <h1>Job Board!</h1>
+
+                        <div class='container'>
+                          <h2 class='job_title'>".$job->getTitle()."</h2>
+                          <p class='job_description'>".$job->getDescription()."</p>
+                          <p class='job_contact'>".$job->getContactInfo()."</p>
+                        </div>
+
+                    </div>
+                </body>
+                </html>";
+    });
+
     return $app;
 ?>

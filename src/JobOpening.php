@@ -13,15 +13,15 @@
         }
         function getTitle()
         {
-            return $this.title;
+            return $this->title;
         }
         function getDescription()
         {
-            return $this.description;
+            return $this->description;
         }
         function getContactInfo()
         {
-            return $this.contact_info;
+            return $this->contact_info;
         }
 
     }
