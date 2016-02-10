@@ -12,7 +12,7 @@
         return $app['twig']->render('form.html.twig');
     });
 
-    $app->get("/result", function() {
+    $app->get("/result", function() use ($app) {
         // $title = $_GET['title'];
         // $description = $_GET['description'];
         // $name = $_GET['name'];
@@ -23,27 +23,7 @@
         $contact = new Contact($_GET['name'], $_GET['phone'], $_GET['email']);
         $job = new JobOpening($_GET['title'], $_GET['description'], $contact);
 
-        return "<!DOCTYPE html>
-                <html>
-                <head>
-                    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
-                    <title>Find a Car</title>
-                </head>
-                <body>
-                    <div class='container'>
-                        <h1>Job Board!</h1>
-
-                        <div class='container'>
-                          <h2 class='job_title'>".$job->getTitle()."</h2>
-                          <p class='job_description'>".$job->getDescription()."</p>
-                          <p class='job_contact'>".$job->getContactInfo()->getName()."</p>
-                          <p class='job_contact'>".$job->getContactInfo()->getPhone()."</p>
-                          <p class='job_contact'>".$job->getContactInfo()->getEmail()."</p>
-                        </div>
-
-                    </div>
-                </body>
-                </html>";
+        return $app['twig']->render('result.html.twig', array('job'=>$job));
     });
 
     return $app;
