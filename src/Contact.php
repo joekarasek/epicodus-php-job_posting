@@ -6,14 +6,14 @@
     private $phone = '';
     private $email = '';
 
-    function __construct($name, $phone, $email)
+    public function __construct($name, $phone, $email)
     {
         $this->name = $name;
         $this->phone = $phone;
         $this->email = $email;
     }
 
-    function getName()
+    public function getName()
     {
       return $this->name;
     }
@@ -27,7 +27,12 @@
     {
       return $this->email;
     }
+
+    // static function getAll()
+    // {
+    //   return
+    // }
   }
-  
+
 
  ?>

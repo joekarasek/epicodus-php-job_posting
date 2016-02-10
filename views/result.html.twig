@@ -7,7 +7,7 @@
 <body>
     <div class='container'>
         <h1>Job Board!</h1>
-
+        {% for job in jobs %}
         <div class='container'>
           <h2 class='job_title'>{{ job.getTitle }}</h2>
           <p class='job_description'>{{ job.getDescription }}</p>
@@ -15,6 +15,9 @@
           <p class='job_contact'>{{ job.getContactInfo.getPhone }}</p>
           <p class='job_contact'>{{ job.getContactInfo.getEmail }}</p>
         </div>
+        {% endfor %}
+
+        <a href='/'>Back to form</a>
 
     </div>
 </body>
